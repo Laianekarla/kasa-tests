@@ -7,10 +7,10 @@ describe('Busca e Favoritar - Kasa Live', () => {
     cy.get('[data-cy="btn-trigger-profile"]').click()
     cy.get('[data-cy="login-email"]', { timeout: 10000 })
       .should('be.visible')
-      .type('testeQA12@gmail.com')
+      .type(Cypress.env('email'))
     cy.get('[data-cy="login-password"]')
       .should('be.visible')
-      .type('123456')
+      .type(Cypress.env('password'))
     cy.get('[data-cy="login-submit"]').click()
     cy.url().should('not.include', 'login')
 
