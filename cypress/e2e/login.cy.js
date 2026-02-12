@@ -37,9 +37,7 @@ describe('Busca e Favoritar - Kasa Live', () => {
     cy.get('#filter-streaming', { timeout: 10000 })
       .should('have.value', 'Amazon Prime Video')
 
-    // ===== FAVORITAR TIMES =====
-
-    
+    // ===== FAVORITAR TIMES =====  
 // ===============================
 // FAVORITOS DINÂMICO ATUALIZADO
 // ===============================
@@ -76,7 +74,30 @@ cy.visit('https://www.kasa.live/favoritos')
     .its('response.statusCode')
     .should('eq', 204)
 
+
+    
+// Clica no avatar
+cy.get('svg.chakra-avatar__svg')
+  .parents('button')
+  .click()
+
+// Clica em Sair
+cy.contains('p', 'Sair')
+  .should('be.visible')
+  .click()
+
+// Valida redirecionamento para home
+cy.url().should('eq', 'https://www.kasa.live/')
+
+// Valida que botão de login está visível novamente
+cy.get('[data-cy="btn-trigger-profile"]')
+  .should('be.visible')
+
+
+
 })
+
+
 
 })
 
